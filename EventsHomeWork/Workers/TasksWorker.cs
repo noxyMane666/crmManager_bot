@@ -18,7 +18,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventsHomeWork
 {
-    internal class TasksWorker : IWorker
+    public class TasksWorker : IWorker
     {
         private readonly ILogger<TasksWorker> _logger;
         private readonly IErrorHandler _errorHandler;

@@ -9,7 +9,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace EventsHomeWork
 {
-    internal static class PrintItemsService
+    public static class PrintItemsService
     {
         internal static async Task PrintAlItems(
             ITelegramBotClient botClient,

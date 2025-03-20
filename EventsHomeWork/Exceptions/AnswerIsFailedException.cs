@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Exceptions
 {
-    internal class AnswerIsFailedException(string message) : Exception(message)
+    public class AnswerIsFailedException(string message) : Exception(message)
     {
     }
 }

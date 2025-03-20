@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Exceptions
 {
-    internal class FormNotFoundException(string message) : ObjectNotFoundException(message)
+    public class FormNotFoundException(string message) : ObjectNotFoundException(message)
     {
     }
 }

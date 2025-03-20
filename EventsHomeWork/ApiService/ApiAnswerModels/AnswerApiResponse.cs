@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Workers
 {
-    class AnswerApiResposnse : ApiResponse
+    public class AnswerApiResposnse : ApiResponse
     {
         public string Message { get; set; } = string.Empty;
     }

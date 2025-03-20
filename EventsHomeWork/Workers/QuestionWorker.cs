@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventsHomeWork
 {
-    internal class QuestionWorker : IWorker
+    public class QuestionWorker : IWorker
     {
         private readonly ILogger<QuestionWorker> _logger;
         private readonly IErrorHandler _errorHandler;

@@ -17,7 +17,7 @@ using Telegram.Bot.Types;
 
 namespace EventsHomeWork.Workers
 {
-    internal class AnswerWorker : IWorker
+    public class AnswerWorker : IWorker
     {
         private readonly ILogger<ItemActionService> _logger;
         private readonly IErrorHandler _errorHandler;

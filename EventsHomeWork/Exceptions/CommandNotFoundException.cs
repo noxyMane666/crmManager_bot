@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Exceptions
 {
-    internal class CommandNotFoundException(string message) : ObjectNotFoundException(message)
+    public class CommandNotFoundException(string message) : ObjectNotFoundException(message)
     {
     }
 }

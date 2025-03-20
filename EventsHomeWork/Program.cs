@@ -29,17 +29,18 @@ namespace EventsHomeWork
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, config) =>
                 {
-                    var path = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
-                    config.AddJsonFile(path, optional: false, reloadOnChange: true);
+                    config.SetBasePath(AppContext.BaseDirectory);
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
                 })
                 .ConfigureServices((context, services) =>
                 {
-
                     services.AddHostedService<BotService>();
                     services.AddHostedService<ActiveUsersCleanupService>();
+
                     services.AddSingleton<UpdateHandler>();
                     services.AddSingleton<IErrorHandler, ErrorHandler>();
                     services.AddSingleton<IActiveUsersService, ActiveUsersService>();
+
                     services.AddTransient<ICallbackHandler, CallbackHandler>();
                     services.AddTransient<AnswerWorker>();
                     services.AddTransient<TasksWorker>();
@@ -47,17 +48,18 @@ namespace EventsHomeWork
                     services.AddTransient<CommentWorker>();
                     services.AddTransient<ICommandHandler, CommandHandler>();
                     services.AddTransient<IMessageHandler, MessageHandler>();
-                    services.AddTransient<IItemService, ItemActionService>();
-                    services.AddTransient<IAuthorizationService, AuthorizationService>();
-                    services.AddTransient<IWelcomeMenuService, WelcomeMenu>();
+
+                    services.AddScoped<IItemService, ItemActionService>();
+                    services.AddScoped<IAuthorizationService, AuthorizationService>();
+                    services.AddScoped<IWelcomeMenuService, WelcomeMenu>();
+
                     services.AddLogging(logging =>
                     {
                         logging.ClearProviders();
                         logging.AddConsole();
-                        logging.AddProvider(new DatabaseLoggerProvider(
-                            context.Configuration.GetConnectionString("DefaultConnection") 
-                            ?? throw new InvalidOperationException("No connection string")
-                        ));
+                        var connectionString = context.Configuration.GetConnectionString("DefaultConnection")
+                            ?? throw new InvalidOperationException("No connection string");
+                        logging.AddProvider(new DatabaseLoggerProvider(connectionString));
                     });
                 });
     }

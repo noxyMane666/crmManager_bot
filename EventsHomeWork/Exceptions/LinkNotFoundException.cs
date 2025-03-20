@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Exceptions
 {
-    internal class LinkNotFoundException (string message) : ObjectNotFoundException(message)
+    public class LinkNotFoundException (string message) : ObjectNotFoundException(message)
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Workers
 {
-    class AuthApiResponse : ApiResponse
+    public class AuthApiResponse : ApiResponse
     {
         public int UserId { get; set; } = 0;
     }

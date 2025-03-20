@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Exceptions
 {
-    internal class ObjectNotFoundException(string message) : NullReferenceException(message)
+    public class ObjectNotFoundException(string message) : NullReferenceException(message)
     {
     }
 }

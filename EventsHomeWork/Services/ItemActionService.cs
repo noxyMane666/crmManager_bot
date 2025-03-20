@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventsHomeWork
 {
-    internal class ItemActionService(ILogger<ItemActionService> logger, IErrorHandler errorHandler, IWelcomeMenuService welcomeMenu, IActiveUsersService activeUsersService) : IItemService
+    public class ItemActionService(ILogger<ItemActionService> logger, IErrorHandler errorHandler, IWelcomeMenuService welcomeMenu, IActiveUsersService activeUsersService) : IItemService
     {
         private readonly ILogger<ItemActionService> _logger = logger;
         private readonly IErrorHandler _errorHandler = errorHandler;

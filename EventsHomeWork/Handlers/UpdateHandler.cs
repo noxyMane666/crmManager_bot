@@ -1,7 +1,4 @@
-﻿using EventsHomeWork.Exceptions;
-using EventsHomeWork.Handlers;
-using EventsHomeWork.StaticServices;
-using EventsHomeWork.Abstrctions;
+﻿using EventsHomeWork.Abstrctions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Runtime.CompilerServices;

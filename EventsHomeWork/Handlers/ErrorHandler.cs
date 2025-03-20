@@ -10,7 +10,7 @@ using EventsHomeWork.Abstrctions;
 
 namespace EventsHomeWork
 {
-    internal class ErrorHandler(IWelcomeMenuService welcomeMenuService, IActiveUsersService activeUsersService) : IErrorHandler
+    public class ErrorHandler(IWelcomeMenuService welcomeMenuService, IActiveUsersService activeUsersService) : IErrorHandler
     {
         private readonly IWelcomeMenuService _welcomeMenuService = welcomeMenuService;
         private readonly IActiveUsersService _activeUsersService = activeUsersService;

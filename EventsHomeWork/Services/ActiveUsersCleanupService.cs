@@ -12,20 +12,20 @@ namespace EventsHomeWork.Services
 {
     public class ActiveUsersCleanupService : BackgroundService
     {
+        private readonly ILogger<ActiveUsersCleanupService> _logger;
         private readonly IActiveUsersService _activeUsersService;
         private readonly TimeSpan _cleanUpInterval = TimeSpan.FromMinutes(5);
         private readonly TimeSpan _userCleanInterval = TimeSpan.FromMinutes(10);
 
-        public ActiveUsersCleanupService(IActiveUsersService activeUsersService)
+        public ActiveUsersCleanupService(IActiveUsersService activeUsersService, ILogger<ActiveUsersCleanupService> logger)
         {
-            Console.WriteLine("✅ Конструктор ActiveUsersCleanupService вызван!");
             _activeUsersService = activeUsersService ?? throw new ArgumentNullException(nameof(activeUsersService));
+            _logger = logger;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
 
-            Console.WriteLine("qqw");
             while (!stoppingToken.IsCancellationRequested)
             {
                 try
@@ -34,7 +34,7 @@ namespace EventsHomeWork.Services
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"Ошибка при очистке неактивных пользователей: {ex.Message}");
+                    _logger.LogError(ex, "Ошибка при очистке неактивных пользователей");
                 }
                 await Task.Delay(_cleanUpInterval, stoppingToken);
             }
@@ -45,11 +45,11 @@ namespace EventsHomeWork.Services
             var usersToRemove = _activeUsersService.GetAllUsers()
                 .Where(user => (DateTime.UtcNow - user.LastActivity) > _userCleanInterval)
                 .ToList();
-            Console.WriteLine("вызван сервис удаления");
+
             foreach (var user in usersToRemove)
             {
                 _activeUsersService.RemoveUser(user);
-                Console.WriteLine($"Пользователь {user.FfUserId} удалён из активных из-за неактивности.");
+                _logger.LogInformation($"Пользователь {user.FfUserId} удалён из активных из-за неактивности.");
             }
         }
     }

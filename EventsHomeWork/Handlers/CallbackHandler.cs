@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventsHomeWork.Handlers
 {
-    internal class CallbackHandler(ILogger<CallbackHandler> logger, IErrorHandler errorHandler) : ICallbackHandler
+    public class CallbackHandler(ILogger<CallbackHandler> logger, IErrorHandler errorHandler) : ICallbackHandler
     {
         private readonly ILogger<CallbackHandler> _logger = logger;
         private readonly IErrorHandler _errorHandler = errorHandler;

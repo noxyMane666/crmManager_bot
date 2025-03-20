@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventsHomeWork.Services
 {
-    internal class CommentWorker : IWorker
+    public class CommentWorker : IWorker
     {
         private readonly ILogger<CommentWorker> _logger;
         private readonly IErrorHandler _errorHandler;

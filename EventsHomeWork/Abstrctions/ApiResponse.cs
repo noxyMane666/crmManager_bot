@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsHomeWork.Abstrctions
 {
-    internal abstract class ApiResponse
+    public abstract class ApiResponse
     {
     }
 }

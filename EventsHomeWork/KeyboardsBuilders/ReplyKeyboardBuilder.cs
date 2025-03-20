@@ -7,7 +7,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace EventsHomeWork.KeyBoardsPrinter
 {
-    internal class ReplyKeyboardBuilder
+    public class ReplyKeyboardBuilder
     {
         public static ReplyKeyboardMarkup BuildReplyKeyboard(string[] services)
         {
