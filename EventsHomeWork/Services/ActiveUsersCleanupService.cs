@@ -10,18 +10,12 @@ using Telegram.Bot.Types;
 
 namespace EventsHomeWork.Services
 {
-    public class ActiveUsersCleanupService : BackgroundService
+    public class ActiveUsersCleanupService(IActiveUsersService activeUsersService, ILogger<ActiveUsersCleanupService> logger) : BackgroundService
     {
-        private readonly ILogger<ActiveUsersCleanupService> _logger;
-        private readonly IActiveUsersService _activeUsersService;
+        private readonly ILogger<ActiveUsersCleanupService> _logger = logger;
+        private readonly IActiveUsersService _activeUsersService = activeUsersService ?? throw new ArgumentNullException(nameof(activeUsersService));
         private readonly TimeSpan _cleanUpInterval = TimeSpan.FromMinutes(5);
         private readonly TimeSpan _userCleanInterval = TimeSpan.FromMinutes(10);
-
-        public ActiveUsersCleanupService(IActiveUsersService activeUsersService, ILogger<ActiveUsersCleanupService> logger)
-        {
-            _activeUsersService = activeUsersService ?? throw new ArgumentNullException(nameof(activeUsersService));
-            _logger = logger;
-        }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {

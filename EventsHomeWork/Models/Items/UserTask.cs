@@ -59,10 +59,7 @@ namespace EventsHomeWork.Models
         }
         private static string EscapeMarkdown(string text)
         {
-            if (string.IsNullOrEmpty(text))
-                return string.Empty;
-
-            return Regex.Replace(text, "([_*\\[\\]()~`>#\\+=|{}.!-])", "\\$1");
+            return Regex.Replace(text, @"([_*\[\]()~`>#\+\-=|{}.!\\])", @"\$1");
         }
     }
 }

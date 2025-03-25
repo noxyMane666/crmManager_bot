@@ -48,7 +48,7 @@ namespace EventsHomeWork.Models
             return MyRegex().Replace(text, "\\$1");
         }
 
-        private static Regex MyRegex() => new Regex(@"([_*\\[\\]()~`>#\\+=|{}.!])", RegexOptions.Compiled);
+        private static Regex MyRegex() => new Regex(@"([_*\\[\]()~`>#+=|{}.!])", RegexOptions.Compiled);
 
         public async Task SendAnswerAsync(ITelegramBotClient botClient, User user, CancellationToken cancellationToken)
         {
